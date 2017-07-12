@@ -1,0 +1,86 @@
+[ 9 ]
+
+mysql> SELECT COUNT(*) FROM Account;
++----------+
+| COUNT(*) |
++----------+
+|     1000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM AddressBook;
++----------+
+| COUNT(*) |
++----------+
+|     1100 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM AddressBook, Entry;
++----------+
+| COUNT(*) |
++----------+
+|  4400000 |
++----------+
+1 row in set (0.08 sec)
+
+
+
+
+[ 10 ]
+
+mysql> SELECT COUNT(*) FROM Entry WHERE birthday < "1982-02-12";
++----------+
+| COUNT(*) |
++----------+
+|     2687 |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT COUNT(*) FROM Entry WHERE birthday >= "1985-01-01";
++----------+
+| COUNT(*) |
++----------+
+|     1084 |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT * FROM Entry ORDER BY birthday ASC LIMIT 1;                                                        
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id   | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| 2260 |            93 | Abigail   | Rollins  | 1945-09-02 09:21:58 | other | address | 194 Non Road   | Berlin         | Berlin           | Bolivia         | 791155          |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+1 row in set (0.00 sec)
+
+
+
+[ 11 ]
+
+mysql> SELECT COUNT(*) FROM Entry WHERE type = "other";                                                                         
++----------+
+| COUNT(*) |
++----------+
+|     1200 |
++----------+
+1 row in set (0.01 sec)
+
+
+mysql> SELECT COUNT(*) FROM Entry WHERE type = "home" OR type = "work";
++----------+
+| COUNT(*) |
++----------+
+|     2800 |
++----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT COUNT(*) FROM Entry WHERE subtype= "phone";
++----------+
+| COUNT(*) |
++----------+
+|      600 |
++----------+
+1 row in set (0.00 sec)
