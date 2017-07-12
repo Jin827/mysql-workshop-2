@@ -1,0 +1,44 @@
+Modify the decodemtl_addressbook.Account row
+Modify the decodemtl_addressbook.AddressBook row
+Modify the three decodemtl_addressbook.Entry rows using one query only
+
+
+UPDATE Account SET modifiedOn = "2014-09-15" WHERE id=1;                                                  
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Account;
++----+---------------------------------+-------------+---------------------+---------------------+
+| id | email                           | password    | createdOn           | modifiedOn          |
++----+---------------------------------+-------------+---------------------+---------------------+
+|  1 | Donec.vitae@Phasellusornare.org | LUW56VCP9SK | 2016-05-16 12:35:09 | 2014-09-15 00:00:00 |
++----+---------------------------------+-------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> UPDATE AddressBook SET accountId = "42" WHERE id = 5;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from AddressBook;
++----+-----------+-------------------------+---------------------+---------------------+
+| id | accountId | name                    | createdOn           | modifiedOn          |
++----+-----------+-------------------------+---------------------+---------------------+
+|  5 |        42 | Non Lobortis Quis Corp. | 2015-04-01 21:57:03 | 2015-04-19 08:47:10 |
++----+-----------+-------------------------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+
+mysql> UPDATE Entry SET firstName= 'userName' WHERE subtype = 'phone';                                         
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select * from Entry;                                                          
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |            52 | userName  | Conrad   | 1973-04-16 13:58:42 |      | phone   | (884) 661-8280 | NULL           | NULL             | NULL            | NULL            |
+|  2 |            96 | userName  | Browning | 1962-04-07 20:22:24 |      | phone   | (727) 361-3316 | NULL           | NULL             | NULL            | NULL            |
+|  3 |            43 | userName  | Jacobson | 1955-01-26 17:54:47 |      | phone   | (702) 505-0434 | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
